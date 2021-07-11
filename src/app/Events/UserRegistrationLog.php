@@ -2,6 +2,7 @@
 
 namespace App\Events;
 
+use App\Models\User;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Foundation\Events\Dispatchable;
@@ -13,14 +14,14 @@ class UserRegistrationLog
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     /**
-     * Create a new event instance.
+     * Create a new event instance
+     * UserRegistrationLog constructor.
      *
-     * @return void
+     * @param User $user
      */
-    public function __construct($user)
+    public function __construct(User $user)
     {
-        Log::info($message);
-        var_dump($user); exit();
+        Log::info($user->email . ' registered in ' . date('Y-m-d H:i:s'));
     }
 
     /**
